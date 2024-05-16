@@ -1,0 +1,22 @@
+name: check
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Conda
+      uses: conda-incubator/setup-miniconda@v2
+      with:
+        environment-file: path/to/environment.yml
+
+    - name: Install Dependencies
+      run: conda env update --file path/to/environment.yml --name base
